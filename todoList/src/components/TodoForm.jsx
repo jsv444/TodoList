@@ -46,7 +46,7 @@ function TodoForm({ addTodo, setTodos }) {
 
   return (
     <form className="todo-form">
-      <h2>Enter a new to do item {apiUrl}</h2>
+      <h2>Enter a new to do item</h2>
       <input
         type="text"
         name="task"
