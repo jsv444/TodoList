@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "dotenv": "^16.0.3"
-  },
-  "devDependencies": {
-    "react-error-overlay": "^6.0.9"
-  }
-}
