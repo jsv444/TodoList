@@ -12,6 +12,7 @@ import { createTheme } from "@mui/material/styles";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 import axios from "axios";
+import { apiUrl } from "./config";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -20,7 +21,7 @@ function App() {
   // Function to add a new todo item to the list
   const addTodo = (newTodo) => {
     axios
-      .get("http://localhost:5287/todoitems")
+      .get(`${apiUrl}`)
       .then((response) => {
         console.log(response.data);
         setTodos([...todos, response.data]); // Update the state of the todo list
@@ -42,9 +43,8 @@ function App() {
 
   //Gets the current todo items from the db
   useEffect(() => {
-    console.log("Checking db lololol");
     axios
-      .get("http://localhost:5287/todoitems")
+      .get(`${apiUrl}`)
       .then((response) => {
         console.log(response.data);
         setTodos(response.data);

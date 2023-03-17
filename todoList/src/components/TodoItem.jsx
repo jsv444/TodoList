@@ -3,13 +3,14 @@ import axios from "axios";
 import "../index.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
+import { apiUrl } from "../config";
 
 function TodoItem({ todo, removeTodo }) {
 
   //Removes the selected todo field
   const handleRemoveClick = () => {
     axios
-      .delete(`http://localhost:5287/todoitems/${todo.id}`)
+      .delete(`${apiUrl}/${todo.id}`)
       .then(() => {
         console.log(`removed item ${todo.id}`);
         removeTodo(todo.id);

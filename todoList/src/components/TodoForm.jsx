@@ -3,11 +3,10 @@ import "../index.css";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { createTheme } from '@mui/material/styles';
-
+import { createTheme } from "@mui/material/styles";
+import { apiUrl } from "../config";
 
 function TodoForm({ addTodo, setTodos }) {
-
   //initial values for the task
   const [todo, setTodo] = useState({
     name: "",
@@ -17,12 +16,12 @@ function TodoForm({ addTodo, setTodos }) {
   function handleChange(e) {
     setTodo({ ...todo, name: e.target.value });
   }
-  
-//This function does an API call to the backend "TodoApi" with the todo state. It the reloads the page to display the submit
+
+  //This function does an API call to the backend "TodoApi" with the todo state. It the reloads the page to display the submit
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5287/todoitems", todo)
+      .post(`${apiUrl}`, todo)
       .then((response) => {
         console.log("Todo added", response.data);
         addTodo(response.data);
@@ -45,10 +44,9 @@ function TodoForm({ addTodo, setTodos }) {
     },
   });
 
-
   return (
     <form className="todo-form">
-      <h2>Enter a new to do item</h2>
+      <h2>Enter a new to do item {apiUrl}</h2>
       <input
         type="text"
         name="task"

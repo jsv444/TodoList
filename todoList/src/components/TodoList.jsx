@@ -6,6 +6,7 @@ import "../index.css";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import UpdateIcon from "@mui/icons-material/Update";
+import { apiUrl } from "../config";
 
 function TodoList({ removeTodo }) {
 
@@ -19,7 +20,7 @@ function TodoList({ removeTodo }) {
   useEffect(() => {
     console.log("Checking if db is empty");
     axios
-      .get("http://localhost:5287/todoitems")
+      .get(`${apiUrl}`)
       .then((response) => {
         setTodos(response.data); //Update todo state
 
