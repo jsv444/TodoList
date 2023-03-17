@@ -24,7 +24,7 @@ function TodoItem({ todo, removeTodo }) {
   return (
     <div className="todo-list-item">
       <li>
-        {todo.name}
+        {todo.task}
       </li>
       <IconButton className="delete-btn" >
           <DeleteIcon  onClick={handleRemoveClick} />

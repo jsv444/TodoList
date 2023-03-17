@@ -9,12 +9,12 @@ import { apiUrl } from "../config";
 function TodoForm({ addTodo, setTodos }) {
   //initial values for the task
   const [todo, setTodo] = useState({
-    name: "",
+    task: "",
   });
 
   // This function is called when there is a change in the input field of the form.
   function handleChange(e) {
-    setTodo({ ...todo, name: e.target.value });
+    setTodo({ ...todo, task: e.target.value });
   }
 
   //This function does an API call to the backend "TodoApi" with the todo state. It the reloads the page to display the submit
@@ -26,7 +26,7 @@ function TodoForm({ addTodo, setTodos }) {
         console.log("Todo added", response.data);
         addTodo(response.data);
         setTodo({
-          name: "",
+          task: "",
         });
         window.location.reload();
       })
@@ -50,7 +50,7 @@ function TodoForm({ addTodo, setTodos }) {
       <input
         type="text"
         name="task"
-        value={todo.name}
+        value={todo.task}
         onChange={handleChange}
         placeholder="Please enter a task"
       />
@@ -60,7 +60,7 @@ function TodoForm({ addTodo, setTodos }) {
         variant="contained"
         onClick={handleSubmit}
         type="submit"
-        disabled={!todo.name}
+        disabled={!todo.task}
       >
         SUBMIT
       </Button>
